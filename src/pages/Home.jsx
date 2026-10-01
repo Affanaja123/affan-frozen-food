@@ -30,21 +30,21 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail }) {
     return (
         <div className="bg-gray-50 min-h-screen text-gray-800">
 
-            {/* 1. Hero Section Full Layar dengan Kotak Teks Sangat Transparan */}
+            {/* 1. Hero Section Full Layar dengan Background Fixed & Overlay Transparan Tipis */}
             <section
                 id='home'
-                className="relative min-h-screen flex items-center w-full bg-cover bg-center bg-no-repeat overflow-hidden"
+                className="relative min-h-screen flex items-center w-full bg-cover bg-center bg-no-repeat bg-fixed overflow-hidden"
                 style={{ backgroundImage: `url(${heroBannerImg})` }}
             >
-                {/* Overlay tipis */}
-                <div className="absolute inset-0 bg-black/10"></div>
+                {/* Overlay Transparan Merah-Putih yang Lebih Tipis & Lembut */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/20 to-red-900/10 pointer-events-none"></div>
 
                 {/* Konten Utama */}
                 <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end items-center pt-20">
 
                     {/* Teks Branding di Sebelah Kanan */}
                     <div className="hidden md:flex flex-col items-end text-right pr-4 space-y-2 select-none">
-                        <span className="text-xs sm:text-sm font-bold tracking-[0.25em] text-red-700 uppercase bg-white/70 backdrop-blur-xs px-4 py-1.5 rounded-full shadow-2xs border border-red-100">
+                        <span className="text-xs sm:text-sm font-bold tracking-[0.25em] text-black uppercase bg-white/80 backdrop-blur-xs px-4 py-1.5 rounded-full shadow-2xs border border-red-100">
                             Premium Quality
                         </span>
                         <h2 className="text-4xl lg:text-6xl font-extrabold tracking-tight drop-shadow-sm font-sans">
