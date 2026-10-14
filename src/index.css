@@ -6,7 +6,7 @@
   --text-h: #111827;
   --primary: #dc2626;
   
-  /* Menggunakan font modern sans-serif yang bersih dan elegan ala UI profesional */
+  /* Menggunakan font Inter secara penuh untuk kesan formal dan profesional */
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   color-scheme: light dark;
   color: var(--text);
@@ -21,6 +21,7 @@ html, body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
 }
 
 #root {
@@ -36,7 +37,12 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-h);
-  font-weight: 600; /* Membuat heading tampak lebih tegas dan profesional */
+  font-family: 'Inter', sans-serif;
+  font-weight: 600; /* Proporsional, tegas dan tidak terlalu tebal */
+}
+
+p, span, a, button, input, table {
+  font-family: 'Inter', sans-serif;
 }
 
 p {

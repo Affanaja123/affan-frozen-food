@@ -8,7 +8,9 @@ import OrderHistory from './pages/OrderHistory';
 import Login from './pages/Login';
 import LoginAdmin from './pages/admin/LoginAdmin';
 import AdminDashboard from './pages/admin/AdminDashboard';
-import AdminPesanan from './pages/admin/AdminPesanan'; // <-- Import Halaman Admin Pesanan
+import AdminPesanan from './pages/admin/AdminPesanan';
+import AdminBarang from './pages/admin/barang/AdminBarang';
+import AdminTambahBarang from './pages/admin/barang/AdminTambahBarang'; // <-- Import Halaman Tambah Barang
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 
@@ -16,7 +18,7 @@ export default function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
   const [currentView, setCurrentView] = useState('home');
@@ -68,6 +70,10 @@ export default function App() {
       setCurrentView('admin_dashboard');
     } else if (menu === 'pesanan') {
       setCurrentView('admin_pesanan');
+    } else if (menu === 'barang') {
+      setCurrentView('admin_barang');
+    } else if (menu === 'tambah_barang') {
+      setCurrentView('admin_tambah_barang');
     } else {
       alert(`Navigasi ke menu admin: ${menu} (segera hadir)`);
     }
@@ -179,10 +185,36 @@ export default function App() {
             onNavigateMenu={handleAdminNavigate}
           />
         )}
+
+        {/* Tampilan Halaman Admin Barang */}
+        {currentView === 'admin_barang' && (
+          <AdminBarang
+            onLogout={handleAdminLogout}
+            onNavigateMenu={handleAdminNavigate}
+            onAddProduct={() => setCurrentView('admin_tambah_barang')}
+          />
+        )}
+
+        {/* Tampilan Halaman Admin Tambah Barang */}
+        {currentView === 'admin_tambah_barang' && (
+          <AdminTambahBarang
+            onLogout={handleAdminLogout}
+            onNavigateMenu={handleAdminNavigate}
+            onBack={() => setCurrentView('admin_barang')}
+          />
+        )}
       </main>
 
       {/* Footer disembunyikan otomatis di halaman tertentu dan semua halaman admin */}
-      {currentView !== 'login' && currentView !== 'admin_login' && currentView !== 'cart' && currentView !== 'profile' && currentView !== 'history' && currentView !== 'admin_dashboard' && currentView !== 'admin_pesanan' && <Footer />}
+      {currentView !== 'login' &&
+        currentView !== 'admin_login' &&
+        currentView !== 'cart' &&
+        currentView !== 'profile' &&
+        currentView !== 'history' &&
+        currentView !== 'admin_dashboard' &&
+        currentView !== 'admin_pesanan' &&
+        currentView !== 'admin_barang' &&
+        currentView !== 'admin_tambah_barang' && <Footer />}
 
       {/* Komponen Panel Keranjang / Cart Drawer */}
       <CartDrawer
