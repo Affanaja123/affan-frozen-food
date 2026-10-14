@@ -10,7 +10,8 @@ import LoginAdmin from './pages/admin/LoginAdmin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminPesanan from './pages/admin/AdminPesanan';
 import AdminBarang from './pages/admin/barang/AdminBarang';
-import AdminTambahBarang from './pages/admin/barang/AdminTambahBarang'; // <-- Import Halaman Tambah Barang
+import AdminTambahBarang from './pages/admin/barang/AdminTambahBarang';
+import AdminEditBarang from './pages/admin/barang/AdminEditBarang'; // <-- Import Halaman Edit Barang
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 
@@ -18,17 +19,37 @@ export default function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-
+  
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
-  const [currentView, setCurrentView] = useState('home');
+  const [editingProduct, setEditingProduct] = useState(null); // State untuk menyimpan data produk yang diedit
 
-  // Deteksi URL saat pertama kali dimuat: jika mengandung '/admin', arahkan ke login admin
-  useEffect(() => {
-    if (window.location.pathname.includes('/admin')) {
-      setCurrentView('admin_login');
+  // Mengambil state admin & view terakhir dari sessionStorage saat halaman dimuat/refresh
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
+    return sessionStorage.getItem('isAdminLoggedIn') === 'true';
+  });
+
+  const [currentView, setCurrentView] = useState(() => {
+    const savedAdminLogin = sessionStorage.getItem('isAdminLoggedIn') === 'true';
+    const savedView = sessionStorage.getItem('currentAdminView');
+    if (savedAdminLogin && savedView) {
+      return savedView;
     }
-  }, []);
+    if (window.location.pathname.includes('/admin')) {
+      return 'admin_login';
+    }
+    return 'home';
+  });
+
+  // Setiap kali currentView atau status login admin berubah, simpan ke sessionStorage
+  useEffect(() => {
+    if (isAdminLoggedIn) {
+      sessionStorage.setItem('isAdminLoggedIn', 'true');
+      sessionStorage.setItem('currentAdminView', currentView);
+    } else {
+      sessionStorage.removeItem('isAdminLoggedIn');
+      sessionStorage.removeItem('currentAdminView');
+    }
+  }, [isAdminLoggedIn, currentView]);
 
   const handleAddToCart = (product, qty) => {
     setCartItems((prev) => {
@@ -81,6 +102,7 @@ export default function App() {
 
   const handleAdminLogout = () => {
     setIsAdminLoggedIn(false);
+    sessionStorage.clear();
     window.history.pushState({}, '', '/');
     setCurrentView('home');
   };
@@ -110,7 +132,7 @@ export default function App() {
         )}
 
         {/* Tampilan Login Khusus Admin */}
-        {currentView === 'admin_login' && (
+        {currentView === 'admin_login' && !isAdminLoggedIn && (
           <LoginAdmin
             onAdminLoginSuccess={() => {
               setIsAdminLoggedIn(true);
@@ -192,6 +214,10 @@ export default function App() {
             onLogout={handleAdminLogout}
             onNavigateMenu={handleAdminNavigate}
             onAddProduct={() => setCurrentView('admin_tambah_barang')}
+            onEditProduct={(product) => {
+              setEditingProduct(product);
+              setCurrentView('admin_edit_barang');
+            }}
           />
         )}
 
@@ -203,18 +229,33 @@ export default function App() {
             onBack={() => setCurrentView('admin_barang')}
           />
         )}
+
+        {/* Tampilan Halaman Admin Edit Barang */}
+        {currentView === 'admin_edit_barang' && (
+          <AdminEditBarang
+            product={editingProduct}
+            onLogout={handleAdminLogout}
+            onNavigateMenu={handleAdminNavigate}
+            onBack={() => setCurrentView('admin_barang')}
+            onSave={(updatedProduct) => {
+              alert('Perubahan barang berhasil disimpan!');
+              setCurrentView('admin_barang');
+            }}
+          />
+        )}
       </main>
 
       {/* Footer disembunyikan otomatis di halaman tertentu dan semua halaman admin */}
-      {currentView !== 'login' &&
-        currentView !== 'admin_login' &&
-        currentView !== 'cart' &&
-        currentView !== 'profile' &&
-        currentView !== 'history' &&
-        currentView !== 'admin_dashboard' &&
-        currentView !== 'admin_pesanan' &&
-        currentView !== 'admin_barang' &&
-        currentView !== 'admin_tambah_barang' && <Footer />}
+      {currentView !== 'login' && 
+       currentView !== 'admin_login' && 
+       currentView !== 'cart' && 
+       currentView !== 'profile' && 
+       currentView !== 'history' && 
+       currentView !== 'admin_dashboard' && 
+       currentView !== 'admin_pesanan' && 
+       currentView !== 'admin_barang' && 
+       currentView !== 'admin_tambah_barang' && 
+       currentView !== 'admin_edit_barang' && <Footer />}
 
       {/* Komponen Panel Keranjang / Cart Drawer */}
       <CartDrawer

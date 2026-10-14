@@ -3,7 +3,7 @@ import { Search, Bell, Settings, Plus, Pencil, Trash2 } from 'lucide-react';
 import AdminSidebar from '../../../components/AdminSidebar';
 import frozenBagImg from '../../../assets/gambar_tanpa_teks.png';
 
-export default function AdminBarang({ onLogout, onNavigateMenu, onAddProduct }) {
+export default function AdminBarang({ onLogout, onNavigateMenu, onAddProduct, onEditProduct }) {
     // Data contoh barang/inventaris
     const [products, setProducts] = useState([
         {
@@ -35,7 +35,7 @@ export default function AdminBarang({ onLogout, onNavigateMenu, onAddProduct }) 
 
             {/* Area Utama di Kanan Sidebar */}
             <div className="flex-1 flex flex-col ml-64 h-screen overflow-hidden">
-                
+
                 {/* Top Navbar */}
                 <header className="h-20 bg-white border-b border-gray-200/60 px-8 flex items-center justify-between shrink-0 w-full z-10">
                     <div className="flex-1 max-w-md mx-4">
@@ -73,14 +73,14 @@ export default function AdminBarang({ onLogout, onNavigateMenu, onAddProduct }) 
 
                 {/* Konten Utama */}
                 <div className="flex-1 overflow-y-auto p-8 space-y-6 bg-[#F8F9FA]">
-                    
+
                     {/* Header Judul & Tombol Tambah Barang */}
                     <div className="flex justify-between items-center">
                         <div>
                             <h2 className="text-xl font-bold text-gray-900 tracking-tight">Manajemen Barang</h2>
                             <p className="text-xs text-gray-500 mt-0.5">Kelola stok dan inventaris frozen food Anda secara real-time.</p>
                         </div>
-                        <button 
+                        <button
                             onClick={onAddProduct}
                             className="bg-red-600 hover:bg-red-700 active:scale-[0.98] text-white font-medium px-5 py-2.5 rounded-xl text-xs transition shadow-sm flex items-center space-x-2 cursor-pointer"
                         >
@@ -91,7 +91,7 @@ export default function AdminBarang({ onLogout, onNavigateMenu, onAddProduct }) 
 
                     {/* Kartu Tabel Inventaris */}
                     <div className="bg-white rounded-2xl border border-gray-200/70 shadow-2xs overflow-hidden flex flex-col justify-between min-h-[500px]">
-                        
+
                         <div className="overflow-x-auto">
                             <table className="w-full text-left border-collapse">
                                 <thead>
@@ -128,14 +128,15 @@ export default function AdminBarang({ onLogout, onNavigateMenu, onAddProduct }) 
                                                 <td className="py-4 px-6 font-medium text-gray-700">{item.stock}</td>
                                                 <td className="py-4 px-8 text-right space-x-2">
                                                     {/* Tombol Edit Ikon */}
-                                                    <button 
+                                                    <button
+                                                        onClick={() => onEditProduct && onEditProduct(item)}
                                                         title="Edit Barang"
                                                         className="p-2 bg-gray-100 hover:bg-black hover:text-white text-gray-700 rounded-xl transition shadow-2xs inline-flex items-center justify-center cursor-pointer"
                                                     >
                                                         <Pencil size={15} />
                                                     </button>
                                                     {/* Tombol Delete Ikon */}
-                                                    <button 
+                                                    <button
                                                         onClick={() => handleDelete(item.id)}
                                                         title="Hapus Barang"
                                                         className="p-2 bg-red-50 hover:bg-red-600 hover:text-white text-red-600 rounded-xl transition shadow-2xs inline-flex items-center justify-center cursor-pointer"
