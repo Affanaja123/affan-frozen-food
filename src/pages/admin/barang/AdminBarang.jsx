@@ -33,11 +33,11 @@ export default function AdminBarang({ onLogout, onNavigateMenu, onAddProduct, on
             {/* Sidebar Kiri */}
             <AdminSidebar activeMenu="barang" onNavigate={onNavigateMenu} onLogout={onLogout} />
 
-            {/* Area Utama di Kanan Sidebar */}
-            <div className="flex-1 flex flex-col ml-64 h-screen overflow-hidden">
+            {/* Area Utama di Kanan Sidebar (Responsif Mobile & Desktop) */}
+            <div className="flex-1 flex flex-col lg:ml-64 ml-0 h-screen overflow-hidden pt-16 lg:pt-0">
 
-                {/* Top Navbar */}
-                <header className="h-20 bg-white border-b border-gray-200/60 px-8 flex items-center justify-between shrink-0 w-full z-10">
+                {/* Top Navbar Desktop */}
+                <header className="hidden lg:flex h-20 bg-white border-b border-gray-200/60 px-8 items-center justify-between shrink-0 w-full z-10">
                     <div className="flex-1 max-w-md mx-4">
                         <div className="relative flex items-center">
                             <span className="absolute left-3.5 text-gray-400 flex items-center pointer-events-none">
@@ -72,35 +72,47 @@ export default function AdminBarang({ onLogout, onNavigateMenu, onAddProduct, on
                 </header>
 
                 {/* Konten Utama */}
-                <div className="flex-1 overflow-y-auto p-8 space-y-6 bg-[#F8F9FA]">
+                <div className="flex-1 overflow-y-auto p-4 sm:p-8 space-y-6 bg-[#F8F9FA]">
 
                     {/* Header Judul & Tombol Tambah Barang */}
-                    <div className="flex justify-between items-center">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                         <div>
-                            <h2 className="text-xl font-bold text-gray-900 tracking-tight">Manajemen Barang</h2>
-                            <p className="text-xs text-gray-500 mt-0.5">Kelola stok dan inventaris frozen food Anda secara real-time.</p>
+                            <h2 className="text-base sm:text-xl font-bold text-gray-900 tracking-tight">Manajemen Barang</h2>
+                            <p className="text-[11px] sm:text-xs text-gray-500 mt-0.5">Kelola stok dan inventaris frozen food Anda secara real-time.</p>
                         </div>
                         <button
                             onClick={onAddProduct}
-                            className="bg-red-600 hover:bg-red-700 active:scale-[0.98] text-white font-medium px-5 py-2.5 rounded-xl text-xs transition shadow-sm flex items-center space-x-2 cursor-pointer"
+                            className="w-full sm:w-auto bg-red-600 hover:bg-red-700 active:scale-[0.98] text-white font-medium px-5 py-2.5 rounded-xl text-xs transition shadow-sm flex items-center justify-center space-x-2 cursor-pointer"
                         >
                             <Plus size={16} />
                             <span>Tambah Barang</span>
                         </button>
                     </div>
 
+                    {/* Search Bar Khusus Mobile */}
+                    <div className="lg:hidden relative flex items-center">
+                        <span className="absolute left-3.5 text-gray-400 flex items-center pointer-events-none">
+                            <Search size={16} />
+                        </span>
+                        <input
+                            type="text"
+                            placeholder="Cari produk frozen..."
+                            className="w-full pl-10 pr-4 py-2.5 text-xs text-gray-800 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-red-600/20 focus:border-red-600 shadow-2xs transition"
+                        />
+                    </div>
+
                     {/* Kartu Tabel Inventaris */}
-                    <div className="bg-white rounded-2xl border border-gray-200/70 shadow-2xs overflow-hidden flex flex-col justify-between min-h-[500px]">
+                    <div className="bg-white rounded-2xl border border-gray-200/70 shadow-2xs overflow-hidden flex flex-col justify-between">
 
                         <div className="overflow-x-auto">
-                            <table className="w-full text-left border-collapse">
+                            <table className="w-full text-left border-collapse min-w-[650px] sm:min-w-full">
                                 <thead>
                                     <tr className="border-b border-gray-100 text-[11px] font-semibold text-gray-400 uppercase tracking-wider">
-                                        <th className="py-4 px-8">Produk</th>
-                                        <th className="py-4 px-6">Kategori</th>
-                                        <th className="py-4 px-6">Harga</th>
-                                        <th className="py-4 px-6">Stok</th>
-                                        <th className="py-4 px-8 text-right">Aksi</th>
+                                        <th className="py-4 px-4 sm:px-8">Produk</th>
+                                        <th className="py-4 px-4 sm:px-6">Kategori</th>
+                                        <th className="py-4 px-4 sm:px-6">Harga</th>
+                                        <th className="py-4 px-4 sm:px-6">Stok</th>
+                                        <th className="py-4 px-4 sm:px-8 text-right">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-50 text-xs text-gray-800">
@@ -113,27 +125,27 @@ export default function AdminBarang({ onLogout, onNavigateMenu, onAddProduct, on
                                     ) : (
                                         products.map((item) => (
                                             <tr key={item.id} className="hover:bg-gray-50/40 transition">
-                                                <td className="py-4 px-8 flex items-center space-x-3.5">
-                                                    <div className="w-10 h-10 rounded-xl bg-gray-50 border border-gray-200/60 p-1 flex items-center justify-center shrink-0 overflow-hidden">
+                                                <td className="py-4 px-4 sm:px-8 flex items-center space-x-3">
+                                                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gray-50 border border-gray-200/60 p-1 flex items-center justify-center shrink-0 overflow-hidden">
                                                         <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-lg" />
                                                     </div>
-                                                    <span className="font-semibold text-gray-900 text-sm">{item.name}</span>
+                                                    <span className="font-semibold text-gray-900 text-xs sm:text-sm">{item.name}</span>
                                                 </td>
-                                                <td className="py-4 px-6">
-                                                    <span className="inline-block px-3 py-1 rounded-full text-[11px] font-medium bg-red-50 text-red-700 border border-red-100/50">
+                                                <td className="py-4 px-4 sm:px-6">
+                                                    <span className="inline-block px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-medium bg-red-50 text-red-700 border border-red-100/50">
                                                         {item.category}
                                                     </span>
                                                 </td>
-                                                <td className="py-4 px-6 font-semibold text-gray-900">{item.price}</td>
-                                                <td className="py-4 px-6 font-medium text-gray-700">{item.stock}</td>
-                                                <td className="py-4 px-8 text-right space-x-2">
+                                                <td className="py-4 px-4 sm:px-6 font-semibold text-gray-900">{item.price}</td>
+                                                <td className="py-4 px-4 sm:px-6 font-medium text-gray-700">{item.stock}</td>
+                                                <td className="py-4 px-4 sm:px-8 text-right space-x-2">
                                                     {/* Tombol Edit Ikon */}
                                                     <button
                                                         onClick={() => onEditProduct && onEditProduct(item)}
                                                         title="Edit Barang"
                                                         className="p-2 bg-gray-100 hover:bg-black hover:text-white text-gray-700 rounded-xl transition shadow-2xs inline-flex items-center justify-center cursor-pointer"
                                                     >
-                                                        <Pencil size={15} />
+                                                        <Pencil size={14} />
                                                     </button>
                                                     {/* Tombol Delete Ikon */}
                                                     <button
@@ -141,7 +153,7 @@ export default function AdminBarang({ onLogout, onNavigateMenu, onAddProduct, on
                                                         title="Hapus Barang"
                                                         className="p-2 bg-red-50 hover:bg-red-600 hover:text-white text-red-600 rounded-xl transition shadow-2xs inline-flex items-center justify-center cursor-pointer"
                                                     >
-                                                        <Trash2 size={15} />
+                                                        <Trash2 size={14} />
                                                     </button>
                                                 </td>
                                             </tr>
@@ -152,7 +164,7 @@ export default function AdminBarang({ onLogout, onNavigateMenu, onAddProduct, on
                         </div>
 
                         {/* Footer Tabel */}
-                        <div className="px-8 py-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                        <div className="px-4 sm:px-8 py-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
                             <span>Menampilkan {products.length} barang</span>
                             <div className="flex items-center space-x-1">
                                 <button className="px-3 py-1.5 border border-gray-200 rounded-lg text-gray-400 bg-gray-50 cursor-not-allowed">

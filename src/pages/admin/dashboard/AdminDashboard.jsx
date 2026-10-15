@@ -1,23 +1,22 @@
-import { TrendingUp, Wallet, AlertTriangle, ShoppingBag, Bell, Settings, MoreHorizontal, Package, Clock, Truck } from 'lucide-react';
-import AdminSidebar from '../../components/AdminSidebar';
+import { TrendingUp, Wallet, AlertTriangle, ShoppingBag, Bell, Settings, MoreHorizontal } from 'lucide-react';
+import AdminSidebar from '../../../components/AdminSidebar';
 
 export default function AdminDashboard({ onLogout, onNavigateMenu }) {
     return (
         <div className="flex h-screen bg-[#F8F9FA] font-sans overflow-hidden">
-            {/* Panggil Sidebar Kiri */}
+            {/* Sidebar Kiri */}
             <AdminSidebar activeMenu="dashboard" onNavigate={onNavigateMenu} onLogout={onLogout} />
 
             {/* Area Utama di Kanan Sidebar */}
-            <div className="flex-1 flex flex-col ml-64 h-screen overflow-hidden">
+            <div className="flex-1 flex flex-col lg:ml-64 ml-0 h-screen overflow-hidden pt-16 lg:pt-0">
                 
-                {/* Top Navbar */}
-                <header className="h-20 bg-white border-b border-gray-200/60 px-8 flex items-center justify-between shrink-0 w-full z-10">
+                {/* Top Navbar Desktop */}
+                <header className="hidden lg:flex h-20 bg-white border-b border-gray-200/60 px-8 items-center justify-between shrink-0 w-full z-10">
                     <div>
                         <h2 className="text-lg font-semibold text-gray-900 tracking-tight">Dashboard Overview</h2>
                         <p className="text-xs text-gray-500 mt-0.5">Selamat datang kembali, Admin. Berikut ringkasan operasional toko hari ini.</p>
                     </div>
 
-                    {/* Bagian Kanan Navbar */}
                     <div className="flex items-center space-x-3">
                         <button className="p-2.5 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-full transition cursor-pointer">
                             <Bell size={18} />
@@ -38,11 +37,17 @@ export default function AdminDashboard({ onLogout, onNavigateMenu }) {
                     </div>
                 </header>
 
-                {/* Konten Dashboard Utama (Scrollable) */}
-                <div className="flex-1 overflow-y-auto p-8 space-y-8 bg-[#F8F9FA]">
+                {/* Judul Khusus Mobile */}
+                <div className="lg:hidden px-4 pt-4 pb-1">
+                    <h2 className="text-base font-bold text-gray-900 tracking-tight">Dashboard Overview</h2>
+                    <p className="text-[11px] text-gray-500">Ringkasan operasional toko hari ini.</p>
+                </div>
+
+                {/* Konten Utama (Scrollable) */}
+                <div className="flex-1 overflow-y-auto p-4 sm:p-8 space-y-6 sm:space-y-8 bg-[#F8F9FA]">
                     
-                    {/* Grid 6 Kartu Metrik */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {/* Grid 4 Kartu Metrik Utama */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                         
                         {/* 1. PENJUALAN HARI INI */}
                         <div className="bg-white p-6 rounded-2xl border border-gray-200/70 shadow-2xs flex flex-col justify-between space-y-3 relative overflow-hidden">
@@ -104,27 +109,7 @@ export default function AdminDashboard({ onLogout, onNavigateMenu }) {
                             <div className="absolute bottom-0 left-0 right-0 h-1 bg-amber-500"></div>
                         </div>
 
-                        {/* 4. JUMLAH STOK GUDANG */}
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200/70 shadow-2xs flex flex-col justify-between space-y-3 relative overflow-hidden">
-                            <div className="flex justify-between items-start">
-                                <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">JUMLAH STOK</span>
-                                <div className="p-2 rounded-xl bg-blue-50 text-blue-600">
-                                    <Package size={16} />
-                                </div>
-                            </div>
-                            <div className="flex items-baseline justify-between">
-                                <div>
-                                    <h3 className="text-xl font-bold text-gray-900 tracking-tight">2,840 Kg</h3>
-                                    <p className="text-[11px] text-gray-400 font-normal mt-0.5">Kapasitas cold storage 85%</p>
-                                </div>
-                                <span className="inline-flex items-center text-blue-600 bg-blue-50 text-[11px] font-semibold px-2 py-0.5 rounded-md">
-                                    Stabil
-                                </span>
-                            </div>
-                            <div className="absolute bottom-0 left-0 right-0 h-1 bg-blue-600"></div>
-                        </div>
-
-                        {/* 5. STOK PRODUK RENDAH */}
+                        {/* 4. STOK PRODUK RENDAH */}
                         <div className="bg-white p-6 rounded-2xl border border-gray-200/70 shadow-2xs flex flex-col justify-between space-y-3 relative overflow-hidden">
                             <div className="flex justify-between items-start">
                                 <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">PERINGATAN STOK</span>
@@ -144,30 +129,10 @@ export default function AdminDashboard({ onLogout, onNavigateMenu }) {
                             <div className="absolute bottom-0 left-0 right-0 h-1 bg-red-600"></div>
                         </div>
 
-                        {/* 6. PENGIRIMAN & KURIR */}
-                        <div className="bg-white p-6 rounded-2xl border border-gray-200/70 shadow-2xs flex flex-col justify-between space-y-3 relative overflow-hidden">
-                            <div className="flex justify-between items-start">
-                                <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">PENGIRIMAN HARI INI</span>
-                                <div className="p-2 rounded-xl bg-purple-50 text-purple-600">
-                                    <Truck size={16} />
-                                </div>
-                            </div>
-                            <div className="flex items-baseline justify-between">
-                                <div>
-                                    <h3 className="text-xl font-bold text-gray-900 tracking-tight">32 Paket</h3>
-                                    <p className="text-[11px] text-gray-400 font-normal mt-0.5">24 selesai dikirim</p>
-                                </div>
-                                <span className="inline-flex items-center text-emerald-600 bg-emerald-50 text-[11px] font-semibold px-2 py-0.5 rounded-md">
-                                    +22%
-                                </span>
-                            </div>
-                            <div className="absolute bottom-0 left-0 right-0 h-1 bg-purple-600"></div>
-                        </div>
-
                     </div>
 
                     {/* Bagian Bawah: Grafik & Aktivitas */}
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 pb-12">
                         
                         {/* Kolom Kiri: Grafik Penjualan */}
                         <div className="lg:col-span-2 bg-white p-6 sm:p-8 rounded-2xl border border-gray-200/70 shadow-2xs space-y-6">
@@ -249,7 +214,7 @@ export default function AdminDashboard({ onLogout, onNavigateMenu }) {
                         <div className="bg-white p-6 sm:p-8 rounded-2xl border border-gray-200/70 shadow-2xs flex flex-col justify-between space-y-6">
                             <div className="flex justify-between items-center">
                                 <h3 className="text-sm font-semibold text-gray-900">Aktivitas Toko</h3>
-                                <button className="text-gray-400 hover:text-gray-600">
+                                <button className="text-gray-400 hover:text-gray-600 cursor-pointer">
                                     <MoreHorizontal size={18} />
                                 </button>
                             </div>

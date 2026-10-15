@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Bell, Settings, ChevronDown, Camera, Save, ArrowLeft, Info } from 'lucide-react';
+import { Search, Bell, Settings, ChevronDown, Camera, Save, Info } from 'lucide-react';
 import AdminSidebar from '../../../components/AdminSidebar';
 import logoImg from '../../../assets/logo.jpeg';
 
@@ -20,13 +20,11 @@ export default function AdminTambahBarang({ onLogout, onNavigateMenu, onBack }) 
             {/* Panggil Sidebar Kiri dengan menu aktif 'barang' */}
             <AdminSidebar activeMenu="barang" onNavigate={onNavigateMenu} onLogout={onLogout} />
 
-            {/* Area Utama di Kanan Sidebar */}
-            <div className="flex-1 flex flex-col ml-64 h-screen overflow-hidden">
+            {/* Area Utama di Kanan Sidebar (Responsif Mobile & Desktop) */}
+            <div className="flex-1 flex flex-col lg:ml-64 ml-0 h-screen overflow-hidden pt-16 lg:pt-0">
                 
-                {/* Top Navbar dengan Bar Carian di Tengah */}
-                <header className="h-20 bg-white border-b border-gray-200/60 px-8 flex items-center justify-between shrink-0 w-full z-10">
-                    
-                    {/* Bar Carian Produk di tengah */}
+                {/* Top Navbar Desktop */}
+                <header className="hidden lg:flex h-20 bg-white border-b border-gray-200/60 px-8 items-center justify-between shrink-0 w-full z-10">
                     <div className="flex-1 max-w-md mx-4">
                         <div className="relative flex items-center">
                             <span className="absolute left-3.5 text-gray-400 flex items-center pointer-events-none">
@@ -40,7 +38,6 @@ export default function AdminTambahBarang({ onLogout, onNavigateMenu, onBack }) 
                         </div>
                     </div>
 
-                    {/* Bagian Kanan Navbar */}
                     <div className="flex items-center space-x-3 shrink-0">
                         <button className="p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-full transition cursor-pointer">
                             <Bell size={18} />
@@ -62,17 +59,17 @@ export default function AdminTambahBarang({ onLogout, onNavigateMenu, onBack }) 
                 </header>
 
                 {/* Konten Utama Halaman Tambah Barang (Scrollable) */}
-                <div className="flex-1 overflow-y-auto p-8 space-y-6 bg-[#F8F9FA]">
+                <div className="flex-1 overflow-y-auto p-4 sm:p-8 space-y-6 bg-[#F8F9FA]">
                     
                     {/* Header Judul & Tombol Kembali */}
-                    <div className="flex justify-between items-center">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                         <div>
-                            <h2 className="text-xl font-bold text-gray-900 tracking-tight">Tambah Barang</h2>
-                            <p className="text-xs text-gray-500 mt-0.5">Perbarui informasi produk dan inventaris gudang.</p>
+                            <h2 className="text-base sm:text-xl font-bold text-gray-900 tracking-tight">Tambah Barang</h2>
+                            <p className="text-[11px] sm:text-xs text-gray-500 mt-0.5">Perbarui informasi produk dan inventaris gudang.</p>
                         </div>
                         <button 
                             onClick={onBack}
-                            className="bg-black hover:bg-gray-800 text-white font-medium px-6 py-2.5 rounded-xl text-xs transition shadow-sm flex items-center space-x-2 cursor-pointer"
+                            className="w-full sm:w-auto bg-black hover:bg-gray-800 text-white font-medium px-6 py-2.5 rounded-xl text-xs transition shadow-sm flex items-center justify-center space-x-2 cursor-pointer"
                         >
                             <span>KEMBALI</span>
                         </button>
@@ -85,7 +82,7 @@ export default function AdminTambahBarang({ onLogout, onNavigateMenu, onBack }) 
                         <div className="lg:col-span-2 space-y-6">
                             
                             {/* Kartu 1: Informasi Umum */}
-                            <div className="bg-white p-6 rounded-2xl border border-gray-200/70 shadow-2xs space-y-5">
+                            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200/70 shadow-2xs space-y-5">
                                 <h3 className="text-sm font-semibold text-gray-900">Informasi Umum</h3>
                                 
                                 <div className="space-y-4">
@@ -126,7 +123,7 @@ export default function AdminTambahBarang({ onLogout, onNavigateMenu, onBack }) 
                             </div>
 
                             {/* Kartu 2: Harga & Inventaris */}
-                            <div className="bg-white p-6 rounded-2xl border border-gray-200/70 shadow-2xs space-y-5">
+                            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200/70 shadow-2xs space-y-5">
                                 <h3 className="text-sm font-semibold text-gray-900">Harga & Inventaris</h3>
                                 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -173,10 +170,10 @@ export default function AdminTambahBarang({ onLogout, onNavigateMenu, onBack }) 
                         <div className="space-y-6">
                             
                             {/* Kartu Foto Produk */}
-                            <div className="bg-white p-6 rounded-2xl border border-gray-200/70 shadow-2xs space-y-4">
+                            <div className="bg-white p-5 sm:p-6 rounded-2xl border border-gray-200/70 shadow-2xs space-y-4">
                                 <h3 className="text-sm font-semibold text-gray-900">Foto Produk</h3>
                                 
-                                <div className="w-full aspect-square rounded-2xl bg-gray-100 overflow-hidden border border-gray-200/60 flex items-center justify-center relative">
+                                <div className="w-full max-w-[200px] sm:max-w-none mx-auto aspect-square rounded-2xl bg-gray-100 overflow-hidden border border-gray-200/60 flex items-center justify-center relative">
                                     <img 
                                         src={logoImg} 
                                         alt="Pratinjau Produk" 

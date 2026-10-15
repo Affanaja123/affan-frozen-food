@@ -7,7 +7,7 @@ import UserProfile from './pages/UserProfile';
 import OrderHistory from './pages/OrderHistory';
 import Login from './pages/Login';
 import LoginAdmin from './pages/admin/LoginAdmin';
-import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminDashboard from './pages/admin/dashboard/AdminDashboard';
 import AdminPesanan from './pages/admin/AdminPesanan';
 import AdminBarang from './pages/admin/barang/AdminBarang';
 import AdminTambahBarang from './pages/admin/barang/AdminTambahBarang';
