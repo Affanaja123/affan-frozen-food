@@ -48,11 +48,11 @@ export default function AdminPesanan({ onLogout, onNavigateMenu }) {
             {/* Sidebar Kiri */}
             <AdminSidebar activeMenu="pesanan" onNavigate={onNavigateMenu} onLogout={onLogout} />
 
-            {/* Area Utama */}
-            <div className="flex-1 flex flex-col ml-64 h-screen overflow-hidden">
+            {/* Area Utama (Responsif Mobile & Desktop) */}
+            <div className="flex-1 flex flex-col lg:ml-64 ml-0 h-screen overflow-hidden pt-16 lg:pt-0">
                 
-                {/* Top Navbar */}
-                <header className="h-20 bg-white border-b border-gray-200/60 px-8 flex items-center justify-between shrink-0 w-full z-10">
+                {/* Top Navbar Desktop */}
+                <header className="hidden lg:flex h-20 bg-white border-b border-gray-200/60 px-8 items-center justify-between shrink-0 w-full z-10">
                     <div className="flex-1 max-w-md mx-4">
                         <div className="relative flex items-center">
                             <span className="absolute left-3.5 text-gray-400 flex items-center pointer-events-none">
@@ -87,35 +87,48 @@ export default function AdminPesanan({ onLogout, onNavigateMenu }) {
                 </header>
 
                 {/* Konten Halaman Pesanan */}
-                <div className="flex-1 overflow-y-auto p-8 space-y-6 bg-[#F8F9FA]">
-                    <div className="bg-white rounded-2xl border border-gray-200/70 shadow-2xs overflow-hidden">
+                <div className="flex-1 overflow-y-auto p-4 sm:p-8 space-y-6 bg-[#F8F9FA]">
+                    
+                    {/* Search Bar Khusus Mobile */}
+                    <div className="lg:hidden relative flex items-center">
+                        <span className="absolute left-3.5 text-gray-400 flex items-center pointer-events-none">
+                            <Search size={16} />
+                        </span>
+                        <input
+                            type="text"
+                            placeholder="Cari pesanan..."
+                            className="w-full pl-10 pr-4 py-2.5 text-xs text-gray-800 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-red-600/20 focus:border-red-600 shadow-2xs transition"
+                        />
+                    </div>
+
+                    <div className="bg-white rounded-2xl border border-gray-200/70 shadow-2xs overflow-hidden flex flex-col justify-between">
                         
-                        <div className="px-8 py-5 border-b border-gray-100">
+                        <div className="px-5 sm:px-8 py-5 border-b border-gray-100">
                             <h3 className="text-sm font-semibold text-gray-800">Daftar Pesanan Terbaru</h3>
                         </div>
 
                         <div className="overflow-x-auto">
-                            <table className="w-full text-left border-collapse">
+                            <table className="w-full text-left border-collapse min-w-[650px] sm:min-w-full">
                                 <thead>
                                     <tr className="border-b border-gray-100 text-[11px] font-semibold text-gray-400 uppercase tracking-wider">
-                                        <th className="py-3.5 px-8 w-16">No</th>
-                                        <th className="py-3.5 px-6">Customer Name</th>
-                                        <th className="py-3.5 px-6">Date</th>
-                                        <th className="py-3.5 px-6">Status</th>
-                                        <th className="py-3.5 px-6">Total</th>
-                                        <th className="py-3.5 px-8 text-right">Actions</th>
+                                        <th className="py-3.5 px-4 sm:px-8 w-16">No</th>
+                                        <th className="py-3.5 px-4 sm:px-6">Customer Name</th>
+                                        <th className="py-3.5 px-4 sm:px-6">Date</th>
+                                        <th className="py-3.5 px-4 sm:px-6">Status</th>
+                                        <th className="py-3.5 px-4 sm:px-6">Total</th>
+                                        <th className="py-3.5 px-4 sm:px-8 text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-50 text-xs text-gray-700">
                                     {orders.map((order, idx) => (
                                         <tr key={order.id} className="hover:bg-gray-50/40 transition">
-                                            <td className="py-4 px-8 font-medium text-gray-900">{idx + 1}</td>
-                                            <td className="py-4 px-6">
+                                            <td className="py-4 px-4 sm:px-8 font-medium text-gray-900">{idx + 1}</td>
+                                            <td className="py-4 px-4 sm:px-6">
                                                 <p className="font-semibold text-gray-900 text-xs">{order.customerName}</p>
                                                 <p className="text-gray-400 text-[11px] font-normal">{order.customerType}</p>
                                             </td>
-                                            <td className="py-4 px-6 text-gray-500 font-normal">{order.date.split(',')[0]}</td>
-                                            <td className="py-4 px-6">
+                                            <td className="py-4 px-4 sm:px-6 text-gray-500 font-normal">{order.date.split(',')[0]}</td>
+                                            <td className="py-4 px-4 sm:px-6">
                                                 <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wide ${
                                                     order.status === 'SELESAI' 
                                                         ? 'bg-emerald-50 text-emerald-700' 
@@ -124,8 +137,8 @@ export default function AdminPesanan({ onLogout, onNavigateMenu }) {
                                                     {order.status}
                                                 </span>
                                             </td>
-                                            <td className="py-4 px-6 font-semibold text-gray-900">{order.total}</td>
-                                            <td className="py-4 px-8 text-right">
+                                            <td className="py-4 px-4 sm:px-6 font-semibold text-gray-900">{order.total}</td>
+                                            <td className="py-4 px-4 sm:px-8 text-right">
                                                 <button 
                                                     onClick={() => setSelectedOrder(order)}
                                                     className="bg-gray-900 hover:bg-black text-white font-medium px-4 py-1.5 rounded-xl text-[11px] transition shadow-2xs cursor-pointer"
@@ -139,6 +152,22 @@ export default function AdminPesanan({ onLogout, onNavigateMenu }) {
                             </table>
                         </div>
 
+                        {/* Footer Tabel dengan Navigasi Halaman */}
+                        <div className="px-4 sm:px-8 py-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
+                            <span>Menampilkan {orders.length} pesanan</span>
+                            <div className="flex items-center space-x-1">
+                                <button className="px-3 py-1.5 border border-gray-200 rounded-lg text-gray-400 bg-gray-50 cursor-not-allowed">
+                                    Sebelumnya
+                                </button>
+                                <button className="px-3 py-1.5 bg-red-700 text-white font-semibold rounded-lg shadow-2xs">
+                                    1
+                                </button>
+                                <button className="px-3 py-1.5 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-50 transition cursor-pointer">
+                                    Berikutnya
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -150,14 +179,14 @@ export default function AdminPesanan({ onLogout, onNavigateMenu }) {
                     <div className="bg-white w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden border border-gray-100 animate-fadeIn">
                         
                         {/* Header Modal */}
-                        <div className="bg-[#990000] text-white p-6 relative flex justify-between items-start">
+                        <div className="bg-[#990000] text-white p-5 sm:p-6 relative flex justify-between items-start">
                             <div className="space-y-0.5">
                                 <span className="text-[10px] font-semibold tracking-wider uppercase opacity-80">DETAIL PESANAN</span>
-                                <h2 className="text-xl font-bold tracking-tight">{selectedOrder.orderNumber}</h2>
+                                <h2 className="text-lg sm:text-xl font-bold tracking-tight">{selectedOrder.orderNumber}</h2>
                                 <p className="text-[11px] opacity-90 font-normal">Dibuat pada {selectedOrder.date}</p>
                             </div>
                             <div className="flex items-center space-x-2.5">
-                                <span className="px-2.5 py-0.5 bg-white/20 rounded-full text-[10px] font-semibold">
+                                <span className="px-2.5 py-0.5 bg-white/25 rounded-full text-[10px] font-semibold">
                                     {selectedOrder.status}
                                 </span>
                                 <button 
@@ -170,7 +199,7 @@ export default function AdminPesanan({ onLogout, onNavigateMenu }) {
                         </div>
 
                         {/* Konten Detail */}
-                        <div className="p-6 space-y-5 max-h-[55vh] overflow-y-auto">
+                        <div className="p-5 sm:p-6 space-y-5 max-h-[50vh] sm:max-h-[55vh] overflow-y-auto">
                             
                             <div className="space-y-1">
                                 <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
@@ -187,12 +216,12 @@ export default function AdminPesanan({ onLogout, onNavigateMenu }) {
                                 </p>
                                 <div className="space-y-2.5 pt-0.5">
                                     {selectedOrder.items.map((item, index) => (
-                                        <div key={index} className="flex justify-between items-start text-xs">
+                                        <div key={index} className="flex justify-between items-start text-xs gap-2">
                                             <div>
                                                 <p className="font-medium text-gray-800">{item.name}</p>
                                                 <p className="text-gray-400 text-[11px]">{item.qty} unit x {item.price}</p>
                                             </div>
-                                            <p className="font-semibold text-gray-800">{item.subtotal}</p>
+                                            <p className="font-semibold text-gray-800 shrink-0">{item.subtotal}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -214,17 +243,17 @@ export default function AdminPesanan({ onLogout, onNavigateMenu }) {
                         </div>
 
                         {/* Footer Modal */}
-                        <div className="p-5 bg-gray-50/80 border-t border-gray-100 flex items-center justify-end space-x-3">
+                        <div className="p-4 sm:p-5 bg-gray-50/80 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-end gap-2.5">
                             <button
                                 onClick={() => handleUpdateStatus(selectedOrder.id, 'SELESAI')}
-                                className="flex-1 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-medium py-2.5 px-5 rounded-xl text-xs transition shadow-sm flex items-center justify-center space-x-1.5 cursor-pointer"
+                                className="w-full sm:flex-1 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-medium py-2.5 px-5 rounded-xl text-xs transition shadow-sm flex items-center justify-center space-x-1.5 cursor-pointer"
                             >
                                 <Check size={14} />
                                 <span>Selesaikan</span>
                             </button>
                             <button
                                 onClick={() => handleUpdateStatus(selectedOrder.id, 'DIBATALKAN')}
-                                className="flex-1 bg-white hover:bg-red-50 text-red-600 border border-red-200 active:scale-[0.98] font-medium py-2.5 px-5 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 cursor-pointer"
+                                className="w-full sm:flex-1 bg-white hover:bg-red-50 text-red-600 border border-red-200 active:scale-[0.98] font-medium py-2.5 px-5 rounded-xl text-xs transition flex items-center justify-center space-x-1.5 cursor-pointer"
                             >
                                 <Trash2 size={14} />
                                 <span>Batalkan Pesanan</span>
