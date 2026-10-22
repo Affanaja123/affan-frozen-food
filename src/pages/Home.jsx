@@ -241,22 +241,28 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
             </section>
 
             {/* 4. Katalog Produk (Dibatasi 4 Produk + Tombol Lihat Selengkapnya) */}
-            <section id="produk" className="w-full px-4 sm:px-6 lg:px-8 py-20 sm:py-24 bg-white scroll-mt-32">
-                <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
-                    <div className="w-full max-w-xl text-center mb-12 space-y-3">
-                        <span className="inline-block text-xs font-sans text-red-700 uppercase tracking-wider bg-red-50 px-3 py-1 rounded-md">
-                            Katalog Pilihan
-                        </span>
-                        <h2 className="text-2xl sm:text-3xl font-serif italic text-gray-900 tracking-tight">
-                            Semua Produk Pilihan
-                        </h2>
+            <section id="produk" className="relative w-full px-5 sm:px-8 lg:px-10 py-16 sm:py-20 bg-white scroll-mt-32 overflow-hidden">
+                <div className="relative z-10 w-full max-w-7xl mx-auto">
+                    <div className="mb-10 sm:mb-12">
+                        <div className="relative isolate inline-block py-4 sm:py-5">
+                            <div aria-hidden="true" className="absolute -inset-x-8 -inset-y-5 -z-10 rounded-full blur-2xl opacity-70" style={{
+                                backgroundImage: 'radial-gradient(ellipse at 35% 55%, rgba(220, 38, 38, 0.24), transparent 48%), radial-gradient(ellipse at 68% 45%, rgba(250, 204, 21, 0.27), transparent 52%)',
+                                filter: 'blur(28px)'
+                            }} />
+                            <span aria-hidden="true" className="absolute left-0 top-0 -translate-y-1/4 whitespace-nowrap text-[4.5rem] sm:text-[7rem] lg:text-[8rem] font-normal leading-none tracking-tight text-transparent pointer-events-none select-none" style={{ WebkitTextStroke: '2px #e6e7e1', fontFamily: 'Poppins, sans-serif' }}>
+                                product product product
+                            </span>
+                            <h2 className="relative text-4xl sm:text-5xl lg:text-6xl font-extrabold text-red-800 tracking-tight">
+                                Product
+                            </h2>
+                        </div>
 
-                        <div className="flex flex-wrap justify-center gap-2 pt-3">
+                        <div className="flex flex-wrap gap-2 pt-4">
                             {CATEGORIES.map((cat) => (
                                 <button
                                     key={cat.id}
                                     onClick={() => setSelectedCategory(cat.id)}
-                                    className={`px-4 py-2 rounded-full text-xs sm:text-sm font-normal transition-all cursor-pointer ${selectedCategory === cat.id ? 'bg-red-700 text-white shadow-sm font-medium' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                                    className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all cursor-pointer border ${selectedCategory === cat.id ? 'bg-red-800 border-red-800 text-white shadow-sm' : 'bg-white/80 border-gray-200 text-gray-600 hover:border-red-700/40 hover:text-red-800'}`}
                                 >
                                     {cat.name}
                                 </button>
@@ -273,30 +279,30 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                             {displayedProducts.map((product) => {
                                 const qty = quantities[product.id] || 1;
                                 return (
-                                    <div key={product.id} className="bg-white rounded-xl border border-gray-100 shadow-2xs hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                                    <div key={product.id} className="bg-white/95 rounded-2xl border border-gray-200/80 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 overflow-hidden flex flex-col justify-between group">
                                         <div>
-                                            <div className="h-32 sm:h-36 bg-gray-50 overflow-hidden relative">
+                                            <div className="h-36 sm:h-44 bg-gray-50 overflow-hidden relative">
                                                 <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-out" />
-                                                <span className="absolute top-2 right-2 bg-red-700 text-white text-[8px] font-bold px-1.5 py-0.5 rounded shadow-2xs tracking-wider">
+                                                <span className="absolute top-3 right-3 bg-white/95 text-red-800 text-[9px] font-bold px-2 py-1 rounded-full shadow-sm tracking-wider">
                                                     HALAL
                                                 </span>
                                             </div>
-                                            <div className="p-3 space-y-1">
-                                                <h3 className="font-medium text-gray-900 text-xs sm:text-sm line-clamp-1 group-hover:text-red-700 transition">
+                                            <div className="p-4 space-y-1.5">
+                                                <h3 className="font-semibold text-gray-900 text-sm sm:text-base line-clamp-1 group-hover:text-red-800 transition">
                                                     {product.name}
                                                 </h3>
-                                                <p className="text-[11px] text-gray-400 font-normal truncate">{product.variant}</p>
+                                                <p className="text-xs text-gray-500 font-normal truncate">{product.variant}</p>
                                                 <div className="flex items-center justify-between pt-0.5">
-                                                    <span className="font-semibold text-red-700 text-xs sm:text-sm">
+                                                    <span className="font-semibold text-red-800 text-sm">
                                                         Rp {product.price.toLocaleString('id-ID')}
                                                     </span>
-                                                    <span className="text-[10px] text-gray-400 font-normal">Stok: {product.stock}</span>
+                                                    <span className="text-[11px] text-gray-400 font-normal">Stok: {product.stock}</span>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div className="p-3 pt-0 space-y-2">
-                                            <div className="flex items-center justify-between border border-gray-200 rounded-lg overflow-hidden bg-gray-50/50">
+                                        <div className="p-4 pt-0 space-y-2.5">
+                                            <div className="flex items-center justify-between border border-gray-200 rounded-xl overflow-hidden bg-gray-50/70">
                                                 <button
                                                     onClick={() => handleQtyChange(product.id, -1)}
                                                     className="px-2.5 py-0.5 text-gray-500 hover:bg-gray-200 font-medium text-xs transition cursor-pointer"
@@ -314,7 +320,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
 
                                             <button
                                                 onClick={() => onAddToCart(product, qty)}
-                                                className="w-full bg-red-700 hover:bg-red-800 active:scale-95 text-white font-medium py-1.5 rounded-lg text-[11px] transition-all duration-200 flex items-center justify-center space-x-1 shadow-2xs cursor-pointer"
+                                                className="w-full bg-red-800 hover:bg-red-900 active:scale-95 text-white font-medium py-2.5 rounded-xl text-xs transition-all duration-200 flex items-center justify-center space-x-1 shadow-sm cursor-pointer"
                                             >
                                                 <span>Tambah Keranjang</span>
                                             </button>
@@ -328,7 +334,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                     <div className="mt-12 text-center">
                         <button
                             onClick={onNavigateToDetail}
-                            className="inline-flex items-center space-x-2 bg-gray-100 hover:bg-red-700 hover:text-white text-gray-800 font-medium px-8 py-3 rounded-full text-xs sm:text-sm transition-all duration-300 shadow-2xs cursor-pointer"
+                            className="inline-flex items-center space-x-2 bg-white hover:bg-red-800 hover:text-white border border-gray-200 text-gray-800 font-medium px-8 py-3 rounded-full text-xs sm:text-sm transition-all duration-300 shadow-sm cursor-pointer"
                         >
                             <span>Lihat Selengkapnya</span>
                             <span>&rarr;</span>
