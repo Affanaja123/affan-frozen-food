@@ -58,27 +58,40 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
     return (
         <div className="bg-gray-50 min-h-screen text-gray-800">
 
-            {/* 1. Hero Section Full Layar dengan Background Fixed & Overlay Transparan Tipis */}
+            {/* 1. Hero Section: full layar, headline besar, CTA pill, dan fade halus ke section berikutnya */}
+              {/* 1. Hero Section: simpel, hanya judul, tagline, dan satu tombol */}
             <section
-                id='home'
-                className="relative min-h-screen flex items-center justify-center md:justify-end w-full bg-cover bg-center bg-no-repeat bg-fixed overflow-hidden pt-20 md:pt-0"
+                id="home"
+                className="relative flex min-h-[100svh] w-full items-center overflow-hidden bg-cover bg-center bg-no-repeat pt-24 pb-24 md:bg-fixed"
                 style={{ backgroundImage: `url(${heroBannerImg})` }}
             >
-                {/* Overlay Transparan Merah-Putih yang Lebih Tipis & Lembut */}
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-white/70 via-white/50 to-red-950/20 md:from-white/30 md:via-white/20 md:to-red-900/10 pointer-events-none"></div>
-
-                {/* Konten Utama */}
-                <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center md:justify-end items-center text-center md:text-right">
-                    <div className="flex flex-col items-center md:items-end pr-0 md:pr-4 space-y-3 select-none w-full md:w-auto">
-                        <span className="text-[11px] sm:text-sm font-bold tracking-[0.2em] sm:tracking-[0.25em] text-black uppercase bg-white/90 backdrop-blur-xs px-4 py-1.5 rounded-full shadow-xs border border-red-100">
-                            Premium Quality
-                        </span>
-                        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight drop-shadow-sm font-sans">
-                            <span className="text-red-800 font-semibold">Affan Frozen Food</span>
-                        </h2>
-                        <p className="text-xs sm:text-sm font-medium text-gray-700 md:text-gray-600 tracking-wide">
-                            Terpercaya & Higienis untuk Keluarga
+                {/* Overlay agar teks tetap terbaca */}
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white/90 via-white/60 to-white/20 md:bg-gradient-to-l md:from-white/85 md:via-white/45 md:to-transparent"
+                />
+                {/* Fade ke putih agar transisi ke section berikutnya mulus */}
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent"
+                />
+ 
+                <div className="relative z-10 mx-auto flex w-full max-w-7xl justify-center px-5 sm:px-8 md:justify-end lg:px-10">
+                    <div className="flex flex-col items-center gap-4 text-center md:items-end md:text-right">
+                        <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
+                            Affan
+                            <span className="block text-red-800">Frozen Food</span>
+                        </h1>
+                        <p className="text-base font-medium text-gray-700 sm:text-lg">
+                            Terpercaya &amp; Higienis untuk Keluarga
                         </p>
+                        <a
+                            href="#produk"
+                            className="mt-2 inline-flex items-center gap-2 rounded-full bg-red-800 px-8 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:bg-red-900 hover:shadow-lg active:scale-95"
+                        >
+                            Lihat Produk
+                            <span aria-hidden="true">&rarr;</span>
+                        </a>
                     </div>
                 </div>
             </section>
