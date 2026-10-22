@@ -87,7 +87,13 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
             <section id="tentang" className="relative w-full bg-white text-gray-900 scroll-mt-32 overflow-hidden py-16 sm:py-24 lg:py-28">
                 {/* Outline watermark, repeated across the top like the reference */}
                 <div aria-hidden="true" className="absolute top-2 left-0 w-full overflow-hidden pointer-events-none select-none">
-                    <div className="whitespace-nowrap text-[4.5rem] sm:text-[7rem] lg:text-[8rem] font-extrabold leading-none tracking-tight text-transparent" style={{ WebkitTextStroke: '2px #e6e7e1' }}>
+                    <div
+                        className="whitespace-nowrap text-[4.5rem] sm:text-[7rem] lg:text-[8rem] font-normal leading-none tracking-tight text-transparent"
+                        style={{
+                            WebkitTextStroke: '1px #f87171',
+                            fontFamily: 'Poppins, sans-serif'
+                        }}
+                    >
                         aboutus aboutus aboutas
                     </div>
                 </div>
