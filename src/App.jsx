@@ -22,6 +22,7 @@ export default function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null); // State untuk menyimpan data produk yang diedit
+  const [activeSection, setActiveSection] = useState('home'); // State untuk melacak section aktif di halaman Home
 
   // Mengambil state admin & view terakhir dari sessionStorage saat halaman dimuat/refresh
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
@@ -110,7 +111,7 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col font-sans">
 
-      {/* Navbar HANYA MUNCUL KETIKA BERADA DI HALAMAN HOME */}
+      {/* Navbar HANYA MUNCUL KETIKA BERADA DI HALAMAN HOME (Menerima props activeSection jika dibutuhkan di Navbar) */}
       {currentView === 'home' && (
         <Navbar
           searchTerm={searchTerm}
@@ -118,6 +119,7 @@ export default function App() {
           cartCount={totalCartCount}
           onOpenCart={() => setIsCartOpen(true)}
           onOpenProfile={handleOpenProfile}
+          activeSection={activeSection}
         />
       )}
 
@@ -146,6 +148,7 @@ export default function App() {
             searchTerm={searchTerm}
             onAddToCart={handleAddToCart}
             onNavigateToDetail={() => setCurrentView('detail')}
+            onActiveSectionChange={(section) => setActiveSection(section)}
           />
         )}
 

@@ -1,14 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
 import logoImg from '../assets/logo.jpeg';
 
-export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCart, onOpenProfile }) {
+export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCart, onOpenProfile, activeSection }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState('Home');
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Sinkronkan activeMenu otomatis berdasarkan props activeSection yang dikirim dari Home / App.jsx
+  useEffect(() => {
+    if (activeSection === 'home') setActiveMenu('Home');
+    else if (activeSection === 'tentang') setActiveMenu('Tentang Kami');
+    else if (activeSection === 'kategori') setActiveMenu('Kategori Pilihan');
+    else if (activeSection === 'produk') setActiveMenu('Semua Produk');
+  }, [activeSection]);
+
   // Efek scroll untuk mengubah warna navbar di halaman Home
-  useState(() => {
+  useEffect(() => {
     const handleScroll = () => {
       const tentangSection = document.getElementById('tentang');
       if (tentangSection) {
@@ -33,10 +41,10 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Tentang Kami', href: '#tentang' },
-    { name: 'Kategori Pilihan', href: '#kategori' },
-    { name: 'Semua Produk', href: '#produk' },
+    { name: 'Home', href: '#home', id: 'home' },
+    { name: 'Tentang Kami', href: '#tentang', id: 'tentang' },
+    { name: 'Kategori Pilihan', href: '#kategori', id: 'kategori' },
+    { name: 'Semua Produk', href: '#produk', id: 'produk' },
   ];
 
   return (
@@ -76,7 +84,7 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
                 key={item.name}
                 href={item.href}
                 onClick={() => setActiveMenu(item.name)}
-                className={`relative h-full flex items-center px-3 transition-colors duration-200 group ${
+                className={`relative h-full flex items-center px-3 transition-colors duration-200 group cursor-pointer ${
                   isScrolled 
                     ? 'text-gray-100 hover:text-white' 
                     : 'text-gray-700 hover:text-black font-medium'
