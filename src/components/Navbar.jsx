@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
-import logoImg from '../assets/logo.jpeg';
+import logoImg from '../assets/logo.png';
 
 export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCart, onOpenProfile, activeSection }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,9 +10,9 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
   // Sinkronkan activeMenu otomatis berdasarkan props activeSection yang dikirim dari Home / App.jsx
   useEffect(() => {
     if (activeSection === 'home') setActiveMenu('Home');
-    else if (activeSection === 'tentang') setActiveMenu('Tentang Kami');
-    else if (activeSection === 'kategori') setActiveMenu('Kategori Pilihan');
-    else if (activeSection === 'produk') setActiveMenu('Semua Produk');
+    else if (activeSection === 'tentang') setActiveMenu('About Us');
+    else if (activeSection === 'kategori') setActiveMenu('Category');
+    else if (activeSection === 'produk') setActiveMenu('Product');
   }, [activeSection]);
 
   // Efek scroll untuk mengubah warna navbar di halaman Home

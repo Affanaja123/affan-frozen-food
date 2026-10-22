@@ -59,7 +59,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
         <div className="bg-gray-50 min-h-screen text-gray-800">
 
             {/* 1. Hero Section: full layar, headline besar, CTA pill, dan fade halus ke section berikutnya */}
-              {/* 1. Hero Section: simpel, hanya judul, tagline, dan satu tombol */}
+            {/* 1. Hero Section: simpel, hanya judul, tagline, dan satu tombol */}
             <section
                 id="home"
                 className="relative flex min-h-[100svh] w-full items-center overflow-hidden bg-cover bg-center bg-no-repeat pt-24 pb-24 md:bg-fixed"
@@ -75,7 +75,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                     aria-hidden="true"
                     className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent"
                 />
- 
+
                 <div className="relative z-10 mx-auto flex w-full max-w-7xl justify-center px-5 sm:px-8 md:justify-end lg:px-10">
                     <div className="flex flex-col items-center gap-4 text-center md:items-end md:text-right">
                         <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
@@ -121,15 +121,18 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                         <div className="relative z-0 h-72 sm:h-[380px] lg:h-[420px] overflow-hidden rounded-tl-[76px] rounded-bl-[76px] bg-white md:mr-[-3rem] lg:mr-[-5rem] md:translate-x-6 lg:translate-x-10 hidden md:block">
                             <div className="absolute inset-0 bg-cover bg-center" style={{
                                 backgroundImage: `url(${heroBannerImg2})`,
-                                maskImage: 'linear-gradient(to right, #000 38%, rgba(0,0,0,0.96) 54%, rgba(0,0,0,0.72) 70%, rgba(0,0,0,0.3) 86%, transparent 100%)',
-                                WebkitMaskImage: 'linear-gradient(to right, #000 38%, rgba(0,0,0,0.96) 54%, rgba(0,0,0,0.72) 70%, rgba(0,0,0,0.3) 86%, transparent 100%)'
+                                // DIUBAH: bagian tajam dipersempit, pudarnya lebih panjang
+                                maskImage: 'linear-gradient(to right, #000 22%, rgba(0,0,0,0.9) 38%, rgba(0,0,0,0.6) 54%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.1) 85%, transparent 100%)',
+                                WebkitMaskImage: 'linear-gradient(to right, #000 22%, rgba(0,0,0,0.9) 38%, rgba(0,0,0,0.6) 54%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.1) 85%, transparent 100%)'
                             }} />
                             <div aria-hidden="true" className="absolute inset-0 scale-105 bg-cover bg-center blur-xl" style={{
                                 backgroundImage: `url(${heroBannerImg2})`,
-                                maskImage: 'linear-gradient(to right, transparent 38%, rgba(0,0,0,0.35) 52%, rgba(0,0,0,0.8) 68%, rgba(0,0,0,0.55) 82%, transparent 100%)',
-                                WebkitMaskImage: 'linear-gradient(to right, transparent 38%, rgba(0,0,0,0.35) 52%, rgba(0,0,0,0.8) 68%, rgba(0,0,0,0.55) 82%, transparent 100%)'
+                                // DIUBAH: lapisan bayangan blur ikut melebar
+                                maskImage: 'linear-gradient(to right, transparent 25%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.75) 62%, rgba(0,0,0,0.45) 80%, transparent 100%)',
+                                WebkitMaskImage: 'linear-gradient(to right, transparent 25%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.75) 62%, rgba(0,0,0,0.45) 80%, transparent 100%)'
                             }} />
-                            <div aria-hidden="true" className="absolute inset-y-0 right-0 w-[42%] bg-gradient-to-r from-transparent via-white/55 to-white" />
+                            {/* DIUBAH: lebar 42% -> 65%, putih lebih pekat (white/55 -> white/70) */}
+                            <div aria-hidden="true" className="absolute inset-y-0 right-0 w-[65%] bg-gradient-to-r from-transparent via-white/70 to-white" />
                         </div>
 
                         <div className="relative z-10 space-y-6 pt-1 sm:pt-3 text-left sm:text-xl lg:text-[1.40rem] leading-[1.7] text-gray-900 md:-ml-8 lg:-ml-12" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400 }}>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { LayoutDashboard, Store, Grid, Package, ShoppingCart, LogOut, Menu, X, ChevronRight } from 'lucide-react';
-import logoImg from '../assets/logo.jpeg';
+import logoImg from '../assets/logo.png';
 
 export default function AdminSidebar({ activeMenu = 'dashboard', onNavigate, onLogout }) {
     const [isMobileOpen, setIsMobileOpen] = useState(false);
