@@ -108,7 +108,7 @@ export default function ProductDetail({
 
                 {/* Judul Kategori Produk */}
                 <div className="text-center py-4 space-y-1">
-                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">PRODUK</p>
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">PRODUCT</p>
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">Sosis</h1>
                 </div>
 

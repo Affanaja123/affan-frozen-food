@@ -42,16 +42,16 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
 
   const navItems = [
     { name: 'Home', href: '#home', id: 'home' },
-    { name: 'Tentang Kami', href: '#tentang', id: 'tentang' },
-    { name: 'Kategori Pilihan', href: '#kategori', id: 'kategori' },
-    { name: 'Semua Produk', href: '#produk', id: 'produk' },
+    { name: 'About Us', href: '#tentang', id: 'tentang' },
+    { name: 'Category', href: '#kategori', id: 'kategori' },
+    { name: 'Product', href: '#produk', id: 'produk' },
   ];
 
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-red-700 text-white shadow-md border-b border-red-800' 
-        : 'bg-white text-gray-800 border-b border-gray-100 shadow-sm'
+      isScrolled
+        ? 'bg-white/95 text-gray-800 shadow-md border-b border-gray-100 backdrop-blur-md'
+        : 'bg-white/90 text-gray-800 border-b border-gray-100 shadow-sm backdrop-blur-md'
     }`}>
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -62,7 +62,7 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
             className="flex items-center space-x-3 cursor-pointer group"
           >
             <div className={`p-1.5 rounded-xl transition duration-200 group-hover:scale-105 ${
-              isScrolled ? 'bg-white shadow-sm' : 'bg-gray-50 shadow-2xs'
+              isScrolled ? 'bg-gray-50 shadow-sm' : 'bg-gray-50 shadow-2xs'
             }`}>
               <img 
                 src={logoImg} 
@@ -70,9 +70,7 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
                 className="h-9 w-auto object-contain rounded-lg"
               />
             </div>
-            <span className={`font-medium text-lg sm:text-xl tracking-tight transition-colors ${
-              isScrolled ? 'text-white' : 'text-gray-900'
-            }`}>
+            <span className="font-medium text-lg sm:text-xl tracking-tight transition-colors text-gray-900">
               Affan Frozen Food
             </span>
           </div>
@@ -84,18 +82,14 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
                 key={item.name}
                 href={item.href}
                 onClick={() => setActiveMenu(item.name)}
-                className={`relative h-full flex items-center px-3 transition-colors duration-200 group cursor-pointer ${
-                  isScrolled 
-                    ? 'text-gray-100 hover:text-white' 
-                    : 'text-gray-700 hover:text-black font-medium'
-                } ${activeMenu === item.name ? (isScrolled ? 'font-medium text-white' : 'font-semibold text-gray-900') : ''}`}
+                className={`relative h-full flex items-center px-3 transition-colors duration-200 group cursor-pointer text-gray-700 hover:text-gray-950 font-medium ${activeMenu === item.name ? 'font-semibold text-red-800' : ''}`}
               >
                 <span>{item.name}</span>
                 
                 {/* Garis indikator bawah */}
                 <span className={`absolute bottom-0 left-3 right-3 h-[2px] rounded-full transition-all duration-300 ${
-                  activeMenu === item.name 
-                    ? (isScrolled ? 'bg-white scale-x-100' : 'bg-red-700 scale-x-100')
+                  activeMenu === item.name
+                    ? 'bg-red-700 scale-x-100'
                     : 'bg-transparent group-hover:bg-gray-400 scale-x-0 group-hover:scale-x-100'
                 }`} />
               </a>
@@ -105,9 +99,7 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
           {/* Search Bar & Actions */}
           <div className="hidden lg:flex items-center space-x-3">
             <div className="relative flex items-center">
-              <span className={`absolute left-3.5 pointer-events-none flex items-center justify-center ${
-                isScrolled ? 'text-gray-500' : 'text-gray-400'
-              }`}>
+              <span className="absolute left-3.5 pointer-events-none flex items-center justify-center text-gray-400">
                 <Search size={16} />
               </span>
               <input
@@ -122,9 +114,7 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
             {/* Cart Icon */}
             <button 
               onClick={onOpenCart}
-              className={`relative p-2.5 rounded-full transition cursor-pointer ${
-                isScrolled ? 'text-white hover:bg-red-800/80' : 'text-gray-700 hover:bg-gray-100'
-              }`}
+              className="relative p-2.5 rounded-full transition cursor-pointer text-gray-700 hover:bg-gray-100"
             >
               <ShoppingCart size={20} className="transition transform hover:scale-105" />
               {cartCount > 0 && (
@@ -137,9 +127,7 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
             {/* User Profile */}
             <button 
               onClick={onOpenProfile}
-              className={`p-2.5 rounded-full transition cursor-pointer ${
-                isScrolled ? 'text-white hover:bg-red-800/80' : 'text-gray-700 hover:bg-gray-100'
-              }`}
+              className="p-2.5 rounded-full transition cursor-pointer text-gray-700 hover:bg-gray-100"
               title="Profil Pengguna"
             >
               <User size={20} className="transition transform hover:scale-105" />
@@ -150,7 +138,7 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
           <div className="flex md:hidden items-center space-x-2">
             <button 
               onClick={onOpenCart}
-              className={`relative p-2 ${isScrolled ? 'text-white' : 'text-gray-900'}`}
+              className="relative p-2 text-gray-900"
             >
               <ShoppingCart size={22} />
               {cartCount > 0 && (
@@ -161,14 +149,14 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
             </button>
             <button 
               onClick={onOpenProfile}
-              className={`p-2 rounded-lg focus:outline-none transition ${isScrolled ? 'text-white' : 'text-gray-900 hover:bg-gray-100'}`}
+              className="p-2 rounded-lg focus:outline-none transition text-gray-900 hover:bg-gray-100"
               title="Profil Pengguna"
             >
               <User size={22} />
             </button>
             <button 
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-lg focus:outline-none transition ${isScrolled ? 'text-white' : 'text-gray-900 hover:bg-gray-100'}`}
+              className="p-2 rounded-lg focus:outline-none transition text-gray-900 hover:bg-gray-100"
             >
               {isOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
@@ -201,7 +189,7 @@ export default function Navbar({ searchTerm, setSearchTerm, cartCount, onOpenCar
                 setIsOpen(false);
               }}
               className={`block py-2.5 px-4 rounded-lg text-sm font-normal transition ${
-                activeMenu === item.name ? 'bg-red-700 text-white font-medium' : 'hover:bg-gray-100 text-gray-700'
+                activeMenu === item.name ? 'bg-red-50 text-red-800 font-medium' : 'hover:bg-gray-100 text-gray-700'
               }`}
             >
               {item.name}

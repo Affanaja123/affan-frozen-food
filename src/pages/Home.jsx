@@ -99,7 +99,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                 </div>
 
                 <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-                    <h2 className="relative z-10 mb-8 sm:mb-10 ml-6 sm:ml-10 text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-emerald-800">
+                    <h2 className="relative z-10 -translate-y-3 sm:-translate-y-4 mb-8 sm:mb-10 ml-6 sm:ml-10 text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-emerald-800">
                         About Us
                     </h2>
 
