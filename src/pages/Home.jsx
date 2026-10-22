@@ -90,7 +90,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                     <div
                         className="whitespace-nowrap text-[4.5rem] sm:text-[7rem] lg:text-[8rem] font-normal leading-none tracking-tight text-transparent"
                         style={{
-                            WebkitTextStroke: '1px #f87171',
+                            WebkitTextStroke: '2px #e6e7e1',
                             fontFamily: 'Poppins, sans-serif'
                         }}
                     >
@@ -156,13 +156,13 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                             }} />
                             <span
                                 aria-hidden="true"
-                                className="absolute left-0 top-0 -translate-y-1/4 whitespace-nowrap text-4xl sm:text-5xl lg:text-6xl font-normal uppercase tracking-tight text-transparent pointer-events-none select-none"
+                                className="absolute left-0 top-0 -translate-y-1/4 whitespace-nowrap text-[4.5rem] sm:text-[7rem] lg:text-[8rem] font-normal leading-none tracking-tight text-transparent pointer-events-none select-none"
                                 style={{
                                     WebkitTextStroke: '2px #e6e7e1',
                                     fontFamily: 'Poppins, sans-serif'
                                 }}
                             >
-                                CATEGORY
+                                category category category
                             </span>
                             <h2 className="relative text-4xl sm:text-5xl lg:text-6xl font-extrabold text-emerald-800 tracking-tight">
                                 Category
