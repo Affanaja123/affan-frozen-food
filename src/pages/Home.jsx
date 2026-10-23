@@ -58,11 +58,10 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
     return (
         <div className="bg-gray-50 min-h-screen text-gray-800">
 
-            {/* 1. Hero Section: full layar, headline besar, CTA pill, dan fade halus ke section berikutnya */}
-            {/* 1. Hero Section: simpel, hanya judul, tagline, dan satu tombol */}
+            {/* 1. Hero Section: Di-update agar posisi background di mobile bergeser ke kiri (menampilkan objek kiri) */}
             <section
                 id="home"
-                className="relative flex min-h-[100svh] w-full items-center overflow-hidden bg-cover bg-center bg-no-repeat pt-24 pb-24 md:bg-fixed"
+                className="relative flex min-h-[100svh] w-full items-center overflow-hidden bg-[left_35%] sm:bg-center bg-cover bg-no-repeat bg-fixed pt-24 pb-24"
                 style={{ backgroundImage: `url(${heroBannerImg})` }}
             >
                 {/* Overlay agar teks tetap terbaca */}
@@ -78,7 +77,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
 
                 <div className="relative z-10 mx-auto flex w-full max-w-7xl justify-center px-5 sm:px-8 md:justify-end lg:px-10">
                     <div className="flex flex-col items-center gap-4 text-center md:items-end md:text-right">
-                        <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
+                        <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 sm:text-6xl lg:text-7xl" style={{ fontFamily: 'Inter, sans-serif' }}>
                             Affan
                             <span className="block text-red-800">Frozen Food</span>
                         </h1>
@@ -107,7 +106,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                             fontFamily: 'Poppins, sans-serif'
                         }}
                     >
-                        aboutus aboutus aboutas
+                        aboutus aboutus aboutas aboutus
                     </div>
                 </div>
 
@@ -121,17 +120,14 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                         <div className="relative z-0 h-72 sm:h-[380px] lg:h-[420px] overflow-hidden rounded-tl-[76px] rounded-bl-[76px] bg-white md:mr-[-3rem] lg:mr-[-5rem] md:translate-x-6 lg:translate-x-10 hidden md:block">
                             <div className="absolute inset-0 bg-cover bg-center" style={{
                                 backgroundImage: `url(${heroBannerImg2})`,
-                                // DIUBAH: bagian tajam dipersempit, pudarnya lebih panjang
                                 maskImage: 'linear-gradient(to right, #000 22%, rgba(0,0,0,0.9) 38%, rgba(0,0,0,0.6) 54%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.1) 85%, transparent 100%)',
                                 WebkitMaskImage: 'linear-gradient(to right, #000 22%, rgba(0,0,0,0.9) 38%, rgba(0,0,0,0.6) 54%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.1) 85%, transparent 100%)'
                             }} />
                             <div aria-hidden="true" className="absolute inset-0 scale-105 bg-cover bg-center blur-xl" style={{
                                 backgroundImage: `url(${heroBannerImg2})`,
-                                // DIUBAH: lapisan bayangan blur ikut melebar
                                 maskImage: 'linear-gradient(to right, transparent 25%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.75) 62%, rgba(0,0,0,0.45) 80%, transparent 100%)',
                                 WebkitMaskImage: 'linear-gradient(to right, transparent 25%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.75) 62%, rgba(0,0,0,0.45) 80%, transparent 100%)'
                             }} />
-                            {/* DIUBAH: lebar 42% -> 65%, putih lebih pekat (white/55 -> white/70) */}
                             <div aria-hidden="true" className="absolute inset-y-0 right-0 w-[65%] bg-gradient-to-r from-transparent via-white/70 to-white" />
                         </div>
 
@@ -164,6 +160,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                     backgroundImage: 'radial-gradient(ellipse at 18% 8%, rgba(229, 231, 235, 0.65), transparent 42%), radial-gradient(ellipse at 78% 42%, rgba(243, 244, 246, 0.8), transparent 44%), linear-gradient(115deg, #ffffff 0%, #f7f8f8 52%, #ffffff 100%)',
                     clipPath: 'ellipse(180% 100% at 50% 100%)'
                 }} />
+                <div aria-hidden="true" className="absolute inset-x-0 bottom-0 z-[1] h-14 pointer-events-none bg-gradient-to-b from-transparent to-white" />
                 <div className="relative z-10 w-full max-w-7xl mx-auto">
                     <div className="flex justify-between items-end mb-8 sm:mb-10">
                         <div className="relative isolate py-4 sm:py-5">
@@ -266,7 +263,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                                 filter: 'blur(28px)'
                             }} />
                             <span aria-hidden="true" className="absolute left-0 top-0 -translate-y-1/4 whitespace-nowrap text-[4.5rem] sm:text-[7rem] lg:text-[8rem] font-normal leading-none tracking-tight text-transparent pointer-events-none select-none" style={{ WebkitTextStroke: '2px #e6e7e1', fontFamily: 'Poppins, sans-serif' }}>
-                                product product product
+                                product product product product
                             </span>
                             <h2 className="relative text-4xl sm:text-5xl lg:text-6xl font-extrabold text-red-800 tracking-tight">
                                 Product
