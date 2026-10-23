@@ -164,7 +164,6 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                     backgroundImage: 'radial-gradient(ellipse at 18% 8%, rgba(229, 231, 235, 0.65), transparent 42%), radial-gradient(ellipse at 78% 42%, rgba(243, 244, 246, 0.8), transparent 44%), linear-gradient(115deg, #ffffff 0%, #f7f8f8 52%, #ffffff 100%)',
                     clipPath: 'ellipse(180% 100% at 50% 100%)'
                 }} />
-                <div aria-hidden="true" className="absolute inset-x-0 top-0 z-[1] h-12 pointer-events-none bg-gradient-to-b from-white/90 via-white/45 to-transparent" />
                 <div className="relative z-10 w-full max-w-7xl mx-auto">
                     <div className="flex justify-between items-end mb-8 sm:mb-10">
                         <div className="relative isolate py-4 sm:py-5">
