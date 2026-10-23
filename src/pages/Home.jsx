@@ -116,8 +116,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                     </h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-14 items-end">
-                        {/* Gambar disembunyikan di HP/Mobile (hidden), dan muncul kembali di layar MD ke atas (md:block) */}
-                        <div className="relative z-0 h-72 sm:h-[380px] lg:h-[420px] overflow-hidden rounded-tl-[76px] rounded-bl-[76px] bg-white md:mr-[-3rem] lg:mr-[-5rem] md:translate-x-6 lg:translate-x-10 hidden md:block">
+                        <div className="relative z-0 h-56 sm:h-[380px] lg:h-[420px] overflow-hidden rounded-tl-[56px] sm:rounded-tl-[76px] rounded-bl-[56px] sm:rounded-bl-[76px] bg-white md:mr-[-3rem] lg:mr-[-5rem] md:translate-x-6 lg:translate-x-10">
                             <div className="absolute inset-0 bg-cover bg-center" style={{
                                 backgroundImage: `url(${heroBannerImg2})`,
                                 maskImage: 'linear-gradient(to right, #000 22%, rgba(0,0,0,0.9) 38%, rgba(0,0,0,0.6) 54%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.1) 85%, transparent 100%)',
@@ -128,7 +127,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                                 maskImage: 'linear-gradient(to right, transparent 25%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.75) 62%, rgba(0,0,0,0.45) 80%, transparent 100%)',
                                 WebkitMaskImage: 'linear-gradient(to right, transparent 25%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.75) 62%, rgba(0,0,0,0.45) 80%, transparent 100%)'
                             }} />
-                            <div aria-hidden="true" className="absolute inset-y-0 right-0 w-[65%] bg-gradient-to-r from-transparent via-white/70 to-white" />
+                            <div aria-hidden="true" className="absolute inset-y-0 right-0 w-[30%] md:w-[60%] bg-gradient-to-r from-transparent via-white/80 md:via-white/95 to-white" />
                         </div>
 
                         <div className="relative z-10 space-y-6 pt-1 sm:pt-3 text-left sm:text-xl lg:text-[1.40rem] leading-[1.7] text-gray-900 md:-ml-8 lg:-ml-12" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400 }}>
