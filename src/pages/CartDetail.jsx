@@ -35,8 +35,8 @@ export default function CartDetail({ cartItems = [], onUpdateQuantity, onRemoveI
                 <header className="mt-0 bg-white border-b border-gray-200">
                     <div className="h-1 bg-red-700" />
 
-                    <div className="max-w-5xl mx-auto px-6 sm:px-12 py-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-                        <div className="flex items-center gap-4">
+                        <div className="max-w-5xl mx-auto px-6 sm:px-12 py-8 flex flex-col sm:flex-row items-center sm:items-center justify-between gap-6">
+                        <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
                             <div className="w-16 h-16 rounded-full bg-red-50 text-red-700 font-semibold text-2xl flex items-center justify-center ring-1 ring-red-100">
                                 <ShoppingBag size={28} />
                             </div>
@@ -71,8 +71,8 @@ export default function CartDetail({ cartItems = [], onUpdateQuantity, onRemoveI
                         
                         {/* Header Tabel */}
                         <div className="grid grid-cols-12 bg-gray-100 text-gray-700 font-semibold py-3.5 px-4 sm:px-6 text-xs sm:text-sm uppercase tracking-wider border-b border-gray-200">
-                            <div className="col-span-12 sm:col-span-6">Produk</div>
-                            <div className="col-span-6 sm:col-span-4 text-left sm:text-left">Harga</div>
+                            <div className="col-span-12 sm:col-span-6 text-center sm:text-left">Produk</div>
+                            <div className="col-span-6 sm:col-span-4 text-center sm:text-left">Harga</div>
                             <div className="col-span-6 sm:col-span-2 text-center">Jumlah</div>
                         </div>
 
@@ -140,7 +140,7 @@ export default function CartDetail({ cartItems = [], onUpdateQuantity, onRemoveI
 
                     {/* Form Pemesanan & Total Section dalam Card yang Rapi */}
                     <div className="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 space-y-6 shadow-xs">
-                        <h3 className="text-base sm:text-lg font-semibold text-gray-900 border-b border-gray-100 pb-4">
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-900 text-center sm:text-left border-b border-gray-100 pb-4">
                             Informasi Pemesanan
                         </h3>
 

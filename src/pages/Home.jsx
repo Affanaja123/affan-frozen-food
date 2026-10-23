@@ -111,7 +111,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                 </div>
 
                 <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-                    <h2 className="relative z-10 -translate-y-3 sm:-translate-y-4 mb-8 sm:mb-10 ml-6 sm:ml-10 text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-emerald-800">
+                    <h2 className="relative z-10 mx-auto w-fit -translate-y-3 sm:-translate-y-4 mb-8 sm:mb-10 text-center sm:mx-0 sm:ml-10 text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-emerald-800">
                         About Us
                     </h2>
 
@@ -162,7 +162,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                 <div aria-hidden="true" className="absolute inset-x-0 bottom-0 z-[1] h-14 pointer-events-none bg-gradient-to-b from-transparent to-white" />
                 <div className="relative z-10 w-full max-w-7xl mx-auto">
                     <div className="flex justify-between items-end mb-8 sm:mb-10">
-                        <div className="relative isolate py-4 sm:py-5">
+                        <div className="relative isolate w-full py-4 sm:w-auto sm:py-5">
                             <div aria-hidden="true" className="absolute -inset-x-8 -inset-y-5 -z-10 rounded-full blur-2xl opacity-80" style={{
                                 backgroundImage: 'radial-gradient(ellipse at 35% 55%, rgba(220, 38, 38, 0.34), transparent 48%), radial-gradient(ellipse at 68% 45%, rgba(250, 204, 21, 0.38), transparent 52%)',
                                 filter: 'blur(30px)'
@@ -177,7 +177,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                             >
                                 category category category
                             </span>
-                            <h2 className="relative text-4xl sm:text-5xl lg:text-6xl font-extrabold text-emerald-800 tracking-tight">
+                            <h2 className="relative mx-auto w-fit text-center sm:mx-0 sm:text-left text-4xl sm:text-5xl lg:text-6xl font-extrabold text-emerald-800 tracking-tight">
                                 Category
                             </h2>
                         </div>
@@ -256,7 +256,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
             <section id="produk" className="relative w-full px-5 sm:px-8 lg:px-10 py-16 sm:py-20 bg-white scroll-mt-32 overflow-hidden">
                 <div className="relative z-10 w-full max-w-7xl mx-auto">
                     <div className="mb-10 sm:mb-12">
-                        <div className="relative isolate inline-block py-4 sm:py-5">
+                        <div className="relative isolate w-full py-4 sm:inline-block sm:w-auto sm:py-5">
                             <div aria-hidden="true" className="absolute -inset-x-8 -inset-y-5 -z-10 rounded-full blur-2xl opacity-70" style={{
                                 backgroundImage: 'radial-gradient(ellipse at 35% 55%, rgba(220, 38, 38, 0.24), transparent 48%), radial-gradient(ellipse at 68% 45%, rgba(250, 204, 21, 0.27), transparent 52%)',
                                 filter: 'blur(28px)'
@@ -264,7 +264,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                             <span aria-hidden="true" className="absolute left-0 top-0 -translate-y-1/4 whitespace-nowrap text-[4.5rem] sm:text-[7rem] lg:text-[8rem] font-normal leading-none tracking-tight text-transparent pointer-events-none select-none" style={{ WebkitTextStroke: '2px #e6e7e1', fontFamily: 'Poppins, sans-serif' }}>
                                 product product product product
                             </span>
-                            <h2 className="relative text-4xl sm:text-5xl lg:text-6xl font-extrabold text-red-800 tracking-tight">
+                            <h2 className="relative mx-auto w-fit text-center sm:mx-0 sm:text-left text-4xl sm:text-5xl lg:text-6xl font-extrabold text-red-800 tracking-tight">
                                 Product
                             </h2>
                         </div>
