@@ -70,10 +70,10 @@ export default function CartDetail({ cartItems = [], onUpdateQuantity, onRemoveI
                     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
                         
                         {/* Header Tabel */}
-                        <div className="grid grid-cols-12 bg-gray-100 text-gray-700 font-semibold py-3.5 px-6 text-xs sm:text-sm uppercase tracking-wider border-b border-gray-200">
-                            <div className="col-span-6">Produk</div>
-                            <div className="col-span-3 sm:col-span-4 text-center sm:text-left">Harga</div>
-                            <div className="col-span-3 sm:col-span-2 text-center">Jumlah</div>
+                        <div className="grid grid-cols-12 bg-gray-100 text-gray-700 font-semibold py-3.5 px-4 sm:px-6 text-xs sm:text-sm uppercase tracking-wider border-b border-gray-200">
+                            <div className="col-span-12 sm:col-span-6">Produk</div>
+                            <div className="col-span-6 sm:col-span-4 text-left sm:text-left">Harga</div>
+                            <div className="col-span-6 sm:col-span-2 text-center">Jumlah</div>
                         </div>
 
                         {/* Baris Item Keranjang */}
@@ -84,29 +84,29 @@ export default function CartDetail({ cartItems = [], onUpdateQuantity, onRemoveI
                         ) : (
                             <div className="divide-y divide-gray-100">
                                 {cartItems.map((item) => (
-                                    <div key={item.id} className="grid grid-cols-12 items-center py-4 px-6 gap-4">
+                                    <div key={item.id} className="grid grid-cols-12 items-center py-4 px-4 sm:px-6 gap-x-2 sm:gap-x-4 gap-y-3">
                                         
                                         {/* Kolom Produk (Gambar & Nama) */}
-                                        <div className="col-span-6 flex items-center space-x-4">
-                                            <div className="w-16 h-16 bg-gray-50 rounded-lg overflow-hidden shrink-0 border border-gray-200">
+                                        <div className="col-span-12 sm:col-span-6 flex items-center space-x-3 sm:space-x-4 min-w-0">
+                                            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-50 rounded-lg overflow-hidden shrink-0 border border-gray-200">
                                                 <img 
                                                     src={item.image} 
                                                     alt={item.name} 
                                                     className="w-full h-full object-cover" 
                                                 />
                                             </div>
-                                            <span className="font-medium text-sm sm:text-base text-gray-900">
+                                            <span className="font-medium text-sm sm:text-base text-gray-900 min-w-0 break-words">
                                                 {item.name}
                                             </span>
                                         </div>
 
                                         {/* Kolom Harga */}
-                                        <div className="col-span-3 sm:col-span-4 text-sm sm:text-base text-gray-700 font-medium">
+                                        <div className="col-span-6 sm:col-span-4 text-sm sm:text-base text-gray-700 font-medium">
                                             Rp {(item.price * item.quantity).toLocaleString('id-ID')}
                                         </div>
 
                                         {/* Kolom Jumlah (< 1 >) */}
-                                        <div className="col-span-3 sm:col-span-2 flex justify-center">
+                                        <div className="col-span-6 sm:col-span-2 flex justify-end sm:justify-center">
                                             <div className="inline-flex items-center border border-gray-300 rounded-lg overflow-hidden bg-white shadow-2xs">
                                                 <button
                                                     onClick={() => {
