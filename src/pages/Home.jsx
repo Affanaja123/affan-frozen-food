@@ -128,7 +128,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                                 WebkitMaskImage: 'linear-gradient(to right, transparent 25%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.75) 62%, rgba(0,0,0,0.45) 80%, transparent 100%)'
                             }} />
                             <div aria-hidden="true" className="absolute inset-y-0 right-0 w-[30%] md:w-[60%] bg-gradient-to-r from-transparent via-white/80 md:via-white/95 to-white" />
-                        </div>+
+                        </div>
 
                         <div className="relative z-10 space-y-6 pt-1 sm:pt-3 text-left sm:text-xl lg:text-[1.40rem] leading-[1.7] text-gray-900 md:-ml-8 lg:-ml-12" style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 400 }}>
                             <div className="space-y-6">
