@@ -14,7 +14,7 @@ export default function AdminSidebar({ activeMenu = 'dashboard', onNavigate, onL
     ];
 
     const handleMenuClick = (id) => {
-        onNavigate(id);
+        if (onNavigate) onNavigate(id);
         setIsMobileOpen(false);
     };
 
@@ -47,7 +47,7 @@ export default function AdminSidebar({ activeMenu = 'dashboard', onNavigate, onL
                 />
             )}
 
-            {/* Sidebar Utama (Lebar tetap w-64 agar proporsional di desktop) */}
+            {/* Sidebar Utama */}
             <aside className={`w-64 bg-white border-r border-gray-200 flex flex-col justify-between shrink-0 select-none h-screen fixed left-0 top-0 z-50 transition-transform duration-300 ease-out shadow-xl lg:shadow-none ${
                 isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
             }`}>

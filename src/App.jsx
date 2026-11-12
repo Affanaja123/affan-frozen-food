@@ -11,7 +11,8 @@ import AdminDashboard from './pages/admin/dashboard/AdminDashboard';
 import AdminPesanan from './pages/admin/AdminPesanan';
 import AdminBarang from './pages/admin/barang/AdminBarang';
 import AdminTambahBarang from './pages/admin/barang/AdminTambahBarang';
-import AdminEditBarang from './pages/admin/barang/AdminEditBarang'; // <-- Import Halaman Edit Barang
+import AdminEditBarang from './pages/admin/barang/AdminEditBarang';
+import AdminKategori from './pages/admin/kategori/AdminKategori'; // <-- Import Halaman Admin Kategori
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 
@@ -21,8 +22,8 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [editingProduct, setEditingProduct] = useState(null); // State untuk menyimpan data produk yang diedit
-  const [activeSection, setActiveSection] = useState('home'); // State untuk melacak section aktif di halaman Home
+  const [editingProduct, setEditingProduct] = useState(null);
+  const [activeSection, setActiveSection] = useState('home');
 
   // Mengambil state admin & view terakhir dari sessionStorage saat halaman dimuat/refresh
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
@@ -96,6 +97,8 @@ export default function App() {
       setCurrentView('admin_barang');
     } else if (menu === 'tambah_barang') {
       setCurrentView('admin_tambah_barang');
+    } else if (menu === 'kategori') {
+      setCurrentView('admin_kategori'); // <-- Menghubungkan menu kategori sidebar ke tampilan AdminKategori
     } else {
       alert(`Navigasi ke menu admin: ${menu} (segera hadir)`);
     }
@@ -111,7 +114,7 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col font-sans">
 
-      {/* Navbar HANYA MUNCUL KETIKA BERADA DI HALAMAN HOME (Menerima props activeSection jika dibutuhkan di Navbar) */}
+      {/* Navbar HANYA MUNCUL KETIKA BERADA DI HALAMAN HOME */}
       {currentView === 'home' && (
         <Navbar
           searchTerm={searchTerm}
@@ -240,15 +243,23 @@ export default function App() {
             onLogout={handleAdminLogout}
             onNavigateMenu={handleAdminNavigate}
             onBack={() => setCurrentView('admin_barang')}
-            onSave={(updatedProduct) => {
+            onSave={() => {
               alert('Perubahan barang berhasil disimpan!');
               setCurrentView('admin_barang');
             }}
           />
         )}
+
+        {/* Tampilan Halaman Admin Kategori */}
+        {currentView === 'admin_kategori' && (
+          <AdminKategori
+            onLogout={handleAdminLogout}
+            onNavigate={handleAdminNavigate}
+          />
+        )}
       </main>
 
-      {/* Footer disembunyikan otomatis di halaman tertentu dan semua halaman admin */}
+      {/* Footer disembunyikan otomatis di semua halaman admin dan halaman khusus */}
       {currentView !== 'login' && 
        currentView !== 'admin_login' && 
        currentView !== 'cart' && 
@@ -258,7 +269,8 @@ export default function App() {
        currentView !== 'admin_pesanan' && 
        currentView !== 'admin_barang' && 
        currentView !== 'admin_tambah_barang' && 
-       currentView !== 'admin_edit_barang' && <Footer />}
+       currentView !== 'admin_edit_barang' && 
+       currentView !== 'admin_kategori' && <Footer />}
 
       {/* Komponen Panel Keranjang / Cart Drawer */}
       <CartDrawer
