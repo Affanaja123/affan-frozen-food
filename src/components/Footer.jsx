@@ -6,7 +6,7 @@ import gojekLogo from '../assets/gojek.jpg';
 
 export default function Footer() {
   return (
-    <footer className="relative bg-white text-gray-800 pt-16 w-full mt-auto overflow-hidden">
+    <footer className="relative bg-gray-50 text-gray-8000 pt-16 w-full mt-4 overflow-auto">
       
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -20,7 +20,7 @@ export default function Footer() {
             />
             <div className="space-y-0.5">
               <h3 className="font-semibold text-sm text-gray-900 tracking-tight">Affan Frozen Food</h3>
-              <p className="text-[10px] text-red-700 font-medium tracking-wider uppercase">Terpercaya & Higienis</p>
+              <p className="text-[10px] text-red-800 font-medium tracking-wider uppercase">Terpercaya & Higienis</p>
             </div>
           </div>
 
@@ -94,12 +94,12 @@ export default function Footer() {
       </div>
 
       {/* Bagian Bawah: Pita Kurva Lengkung Warna Merah */}
-      <div className="relative bg-red-700 text-white pt-10 pb-5 overflow-hidden">
+      <div className="relative bg-red-800 text-white pt-10 pb-5 overflow-hidden">
         
         {/* SVG Kurva Gelombang Atas */}
         <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-0">
           <svg 
-            className="relative block w-full h-8 sm:h-12 text-white" 
+            className="relative block w-full h-8 sm:h-12 text-gray-50" 
             viewBox="0 0 1200 120" 
             preserveAspectRatio="none"
           >
@@ -119,3 +119,4 @@ export default function Footer() {
     </footer>
   );
 }
+

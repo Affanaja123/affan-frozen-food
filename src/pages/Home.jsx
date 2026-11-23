@@ -239,7 +239,7 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
 
                                 <div className="absolute bottom-0 inset-x-0 p-5 text-center">
-                                    <h4 className="font-semibold text-white text-base sm:text-lg tracking-wide drop-shadow-md">
+                                    <h4 className="font-semibold !text-white text-base sm:text-lg tracking-wide drop-shadow-md">
                                         {cat.name}
                                     </h4>
                                     <span className="text-xs text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-medium">
@@ -358,3 +358,4 @@ export default function Home({ searchTerm, onAddToCart, onNavigateToDetail, onAc
         </div>
     );
 }
+
